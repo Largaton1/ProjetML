@@ -4,11 +4,11 @@ from pydantic import BaseModel
 import joblib
 import numpy as np
 import warnings
-from sklearn.exceptions import InconsistentVersionWarning
+# from sklearn.exceptions import InconsistentVersionWarning
 
 
 # Ignorer l'avertissement InconsistentVersionWarning
-warnings.filterwarnings("ignore", category=InconsistentVersionWarning)
+# warnings.filterwarnings("ignore", category=InconsistentVersionWarning)
 
 
 
@@ -35,6 +35,9 @@ def decide_flower_type(predicted_class):
         return "Virginica"
     else:
         return "Unknown"
+@app.get("/")
+def read_root():
+    return {"message": "welcome"}
 
 # Définition de la route pour effectuer des prédictions
 @app.post("/predict")
